@@ -40,7 +40,7 @@ Execute the following to test the model on the validation set:
 ```
 $ python 01_caption_lstm.py
 ```
-This will create image.png in the `images` folder and display the predicted captions along with the ground truth captions.
+This will create `image.png` in the `images` folder and display the predicted captions along with the ground truth captions.
 
 ## Dot Production Attention LSTM Captioning
 
@@ -54,7 +54,7 @@ Execute the following to test the model on the validation set:
 ```
 $ python 02_caption_attention.py
 ```
-This will create image.png in the `images` folder and display the predicted captions along with the ground truth captions and `image_exp.png` in the `images` folder that shows the attentions map for each word.
+This will create `image.png` in the `images` folder and display the predicted captions along with the ground truth captions and `image_exp.png` in the `images` folder that shows the attentions map for each word.
 
 ## Bahdanau Attention LSTM Captioning
 
@@ -68,7 +68,7 @@ Execute the following to test the model on the validation set:
 ```
 $ python 03_caption_attention_bahdanau.py
 ```
-This will create image.png in the `images` folder and display the predicted captions along with the ground truth captions and `image_exp.png` in the `images` folder that shows the attentions map for each word.
+This will create `image.png` in the `images` folder and display the predicted captions along with the ground truth captions and `image_exp.png` in the `images` folder that shows the attentions map for each word.
 
 ## Transformers Captioning
 
@@ -82,7 +82,7 @@ Execute the following to test the model on the validation set:
 ```
 $ python 04_caption_teansformer.py
 ```
-This will create image.png in the `images` folder and display the predicted captions along with the ground truth captions.
+This will create `image.png` in the `images` folder and display the predicted captions along with the ground truth captions.
 
 ## Plots
 
