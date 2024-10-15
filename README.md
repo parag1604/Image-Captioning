@@ -54,21 +54,21 @@ Execute the following to test the model on the validation set:
 ```
 $ python 02_caption_attention.py
 ```
-This will create image.png in the `images` folder and display the predicted captions along with the ground truth captions along with `image_exp.png` in the `images` folder that shows the attentions map for each word.
+This will create image.png in the `images` folder and display the predicted captions along with the ground truth captions and `image_exp.png` in the `images` folder that shows the attentions map for each word.
 
 ## Bahdanau Attention LSTM Captioning
 
 Execute the following to run the Bahdanau Attention ViT LSTM model:
 ```
-$ python 03_caption_attnetion_bahdanau.py train
+$ python 03_caption_attention_bahdanau.py train
 ```
 This will train the model on the training set and save the trained model in `models/vit_lstm_attnb_encoder.pth`, `models/vit_lstm_attnb_decoder.pth` and the validation scores in `temp/vit_lstm_attnb_val_scores.npy`.
 
 Execute the following to test the model on the validation set:
 ```
-$ python 03_caption_attnetion_bahdanau.py
+$ python 03_caption_attention_bahdanau.py
 ```
-This will create image.png in the `images` folder and display the predicted captions along with the ground truth captions along with `image_exp.png` in the `images` folder that shows the attentions map for each word.
+This will create image.png in the `images` folder and display the predicted captions along with the ground truth captions and `image_exp.png` in the `images` folder that shows the attentions map for each word.
 
 ## Transformers Captioning
 
@@ -77,6 +77,12 @@ Execute the following to run the ViT Transformer captioning model:
 $ python 04_caption_transformer.py train
 ```
 This will train the model on the training set and save the trained model in `models/vit_tf_decoder.pth` and the validation scores in `temp/vit_tf_val_scores.npy`.
+
+Execute the following to test the model on the validation set:
+```
+$ python 04_caption_teansformer.py
+```
+This will create image.png in the `images` folder and display the predicted captions along with the ground truth captions.
 
 ## Plots
 
