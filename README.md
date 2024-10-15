@@ -14,4 +14,16 @@ Ensure the following is installed in your python environment:
 - Transformers (Huggingface): Required for Pretrained Vision Transformers
 - NLTK - required for calculating BLEU score
 
+## Dataset and preparation
+
+After cloning, ensure to create the folders `data`, `models`, and `temp` by running:
+```
+$ mkdir data models temp
+```
+Then download the and extract the dataset [Kaggle - Flickr8k](https://www.kaggle.com/datasets/adityajn105/flickr8k) and paste the folder `flickr8k` inside the `data` folder.
+
 ## Vanilla LSTM Captioning
+
+
+## Plots
+![A plot showing how the model fits on the validaition set in the BLEU metric](images/plot.png "Val BLUE scores")
