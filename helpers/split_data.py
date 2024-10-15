@@ -7,7 +7,7 @@ np.random.seed(2024)
 
 
 val_size = 500
-with open('../data/flickr8k/captions.txt', 'r') as f:
+with open('data/flickr8k/captions.txt', 'r') as f:
     lines = f.readlines()
 head = lines[0]
 lines = lines[1:]
@@ -31,8 +31,8 @@ for idx, image_path in enumerate(captions):
     else:
         val_captions[image_path] = captions[image_path]
 
-with open('../data/flickr8k/train_captions.pkl', 'wb') as f:
+with open('data/flickr8k/train_captions.pkl', 'wb') as f:
     pickle.dump(train_captions, f)
 
-with open('../data/flickr8k/val_captions.pkl', 'wb') as f:
+with open('data/flickr8k/val_captions.pkl', 'wb') as f:
     pickle.dump(val_captions, f)
