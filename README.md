@@ -84,5 +84,6 @@ Execute the following to plot the validation scores:
 ```
 $ python helpers/plot.py
 ```
+The plot will be saved at `images/plot.png`. The plot should look something as follows:
 
 ![A plot showing how the model fits on the validaition set in the BLEU metric](images/plot.png "Val BLUE scores")
