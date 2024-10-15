@@ -126,8 +126,12 @@ def main(args):
 
 
 if __name__ == '__main__':
+    import sys
+    is_train = False
+    if len(sys.argv) > 1:
+        is_train = sys.argv[1] == 'train'
     args = ArgStorage(
-        is_train=False,
+        is_train=is_train,
         seed=2024,
         gpu_id=0,
         epochs=30,
