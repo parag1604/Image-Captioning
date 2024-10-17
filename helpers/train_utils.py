@@ -3,7 +3,7 @@ import torch.nn.functional as F
 
 import numpy as np
 import matplotlib.pyplot as plt
-import nltk.translate.bleu_score as sentence_bleu
+from nltk.translate import bleu_score
 
 from helpers.dataloader import get_dataloader
 from helpers.utils import encode_caption,decode_caption, plot_attn
@@ -11,7 +11,7 @@ from helpers.utils import encode_caption,decode_caption, plot_attn
 
 def train(model, optimizer, trainset, valset, device, word2idx, idx2word, args):
     encoder, decoder = model
-    smoothening_function = sentence_bleu.SmoothingFunction().method2
+    smoothening_function = bleu_score.SmoothingFunction().method2
     
     scores = [0.0008]
     valloader = get_dataloader(
@@ -85,7 +85,7 @@ def train(model, optimizer, trainset, valset, device, word2idx, idx2word, args):
                     gts = [gt.split(' ') for gt in gts]
                     pred = log_probs[i].argmax(dim=-1).detach().cpu().tolist()
                     pred = decode_caption(pred, idx2word).split(' ')
-                    score = sentence_bleu.sentence_bleu(
+                    score = bleu_score.sentence_bleu(
                         references=gts, hypothesis=pred,
                         smoothing_function=smoothening_function)
                     val_score += score
