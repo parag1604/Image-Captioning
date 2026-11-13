@@ -6,7 +6,7 @@ Pytorch code for Image captioning using ViT Encoder and the following Decoders: 
 
 ## Theory
 
-Please note that the theory corresponding to the codes is hosted on this [page](https://parag1604.github.io/notes/Machine-Learning/Applications-of-Neural-Networks#image-captioning) (section "Image captioning"; the LSTM and attention background is in the sections "Sequences and text classification" and "Attention and transformers")
+Please note that the theory corresponding to the codes is hosted on this [page](https://parag1604.github.io/notes/Machine-Learning/Sequence-Models#image-captioning) (section "Image captioning" of the Sequence Models lecture; the LSTM and attention background is in its sections "Sequences and text classification" and "Attention and transformers")
 
 ## Python Environment Setup
 
