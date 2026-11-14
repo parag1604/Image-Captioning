@@ -78,13 +78,13 @@ This will create `image.png` in the `images` folder and display the predicted ca
 
 Execute the following to run the ViT Transformer captioning model:
 ```
-$ python 04_caption_transformer.py train
+$ python 04_caption_transformers.py train
 ```
 This will train the model on the training set and save the trained model in `models/vit_tf_decoder.pth` and the validation scores in `temp/vit_tf_val_scores.npy`.
 
 Execute the following to test the model on the validation set:
 ```
-$ python 04_caption_teansformer.py
+$ python 04_caption_transformers.py
 ```
 This will create `image.png` in the `images` folder and display the predicted captions along with the ground truth captions.
 

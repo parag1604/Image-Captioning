@@ -31,6 +31,9 @@ class TransformerDecoder(nn.Module):
         self.num_rnn_layers = num_layers
         self.hid_dim = hid_dim
         self.embedding = nn.Embedding(vocab_size, hid_dim)
+        # self-attention is permutation-equivariant, so the decoder needs
+        # to be told where each token sits: one learned vector per position
+        self.pos_embedding = nn.Embedding(max_length, hid_dim)
         self.tf_dec = nn.ModuleList([
             nn.TransformerDecoderLayer(
                 d_model=hid_dim, nhead=num_heads, dropout=dropout, batch_first=True)
@@ -43,6 +46,11 @@ class TransformerDecoder(nn.Module):
             torch.ones(max_length, max_length) * float('-inf'), diagonal=1)
         self.tgt_causal_mask = self.tgt_causal_mask.to(device)
     
+    def embed(self, tokens):
+        # token embedding + positional embedding, shape (B, L, hid_dim)
+        positions = torch.arange(tokens.size(1), device=tokens.device)
+        return self.embedding(tokens) + self.pos_embedding(positions)
+
     def forward(self, enc_memory, gt_captions=None):
         device = enc_memory.device
         
@@ -52,12 +60,13 @@ class TransformerDecoder(nn.Module):
             masks = (gt_captions == 0).float()
             decoder_inputs[:, 1:] = gt_captions[:, :-1]
             
-            decoder_hidden = self.dropout(self.embedding(decoder_inputs))
+            decoder_hidden = self.dropout(self.embed(decoder_inputs))
+            seq_len = decoder_inputs.size(1)
             for layer in self.tf_dec:
                 decoder_hidden = layer(
                     tgt=decoder_hidden,
                     memory=enc_memory,
-                    tgt_mask=self.tgt_causal_mask,
+                    tgt_mask=self.tgt_causal_mask[:seq_len, :seq_len],
                     tgt_key_padding_mask=masks
                 )
             
@@ -68,7 +77,7 @@ class TransformerDecoder(nn.Module):
                 size=(enc_memory.size(0), 1),
                 dtype=torch.long, device=device)
             for i in range(1, self.max_length + 1):
-                decoder_hidden = self.dropout(self.embedding(decoder_inputs))
+                decoder_hidden = self.dropout(self.embed(decoder_inputs))
                 for layer in self.tf_dec:
                     decoder_hidden = layer(
                         tgt=decoder_hidden,
