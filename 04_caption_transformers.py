@@ -12,8 +12,9 @@ from helpers.utils import *
 class ViTEncoder(nn.Module):
     def __init__(self):
         super(ViTEncoder, self).__init__()
-        self.encoder = ViTModel.from_pretrained('google/vit-base-patch16-224')
-        self.encoder.pooler.dense = nn.Identity()
+        # the decoder attends to all patch tokens, so the pooled [CLS] output is not needed
+        self.encoder = ViTModel.from_pretrained(
+            'google/vit-base-patch16-224', add_pooling_layer=False)
 
         # freeze the encoder
         for param in self.encoder.parameters():
