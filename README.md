@@ -24,7 +24,7 @@ After cloning, ensure to create the folders `data`, `models`, and `temp` by runn
 ```
 $ mkdir data models temp
 ```
-Then download the and extract the dataset [Kaggle - Flickr8k](https://www.kaggle.com/datasets/adityajn105/flickr8k) and paste the folder `flickr8k` inside the `data` folder.
+Then download and extract the dataset [Kaggle - Flickr8k](https://www.kaggle.com/datasets/adityajn105/flickr8k) and paste the folder `flickr8k` inside the `data` folder.
 
 Preprocess the dataset by running:
 ```
